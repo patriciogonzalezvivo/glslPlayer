@@ -42,7 +42,7 @@
         <meta name="twitter:image:width" content="500">
         <meta name="twitter:image:height" content="500">
 
-        <meta name="twitter:player" content="https://player.thebookofshaders.com/?log='. $_GET['log'].'">
+        <meta name="twitter:player" content="https://thebookofshaders.com/glslPlayer/?log='. $_GET['log'].'">
         <meta name="twitter:player:width" content="500">
         <meta name="twitter:player:height" content="500">
 
