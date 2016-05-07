@@ -2,28 +2,54 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <?php
-            if (!empty($_GET['log'])) {
-                echo '<title>'.$_GET['log'].'</title>';
-            } else {
-                echo '<title>GlslPlayer</title>';
-            }
-        ?>
+
+<?php
+    if (!empty($_GET['log'])) {
+        echo '
+            <title>'.$_GET['log'].'</title>';
+    } else {
+        echo '
+            <title>GlslPlayer</title>';
+    }
+?>
 
         <script type="text/javascript" src="http://thebookofshaders.com/glslCanvas/GlslCanvas.js"></script>
         <script type="text/javascript" src="src/fetch.js"></script>
 
         <!— Open Graph data —>
-        <meta property="og:title" content="GLSL Shader" />
         <meta property="og:type" content="article" />
-        <meta property="og:description" content="The Book of Shader player" />
+        <meta property="og:title" content="GLSL Shader" />
+        <meta property="og:description" content="The Book of Shaders player" />
+<?php
+    if (!empty($_GET['log'])) {
+        echo '        <meta property="og:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
+        <meta property="og:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
+    }
+?>
 
-        <?php
-            if (!empty($_GET['log'])) {
-                echo '<meta property="og:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>';
-                echo '<meta property="og:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
-            }
-        ?>
+        <!— Twitter Card—>
+        <meta name="twitter:card" content="video">
+        <meta name="twitter:site" content="@bookofshaders">
+        <meta name="twitter:title" content="GLSL Shader">
+        <meta name="twitter:description" content="The Book of Shaders player">
+        <meta name="twitter:domain" content="thebookofshaders.com">
+
+<?php
+    if (!empty($_GET['log'])) {
+        echo '
+        <meta name="twitter:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
+        <meta name="twitter:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
+        <meta name="twitter:image:width" content="500">
+        <meta name="twitter:image:height" content="500">
+
+        <meta name="twitter:player" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'">
+        <meta name="twitter:player:width" content="500">
+        <meta name="twitter:player:height" content="500">
+
+        <meta property="og:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
+        <meta property="og:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
+    }
+?>
 
         <style>
             body {
