@@ -17,13 +17,14 @@
         <script type="text/javascript" src="src/fetch.js"></script>
 
         <!— Open Graph data —>
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
         <meta property="og:title" content="GLSL Shader" />
+        <meta property="og:site_name" content="The Book of Shaders"/>
         <meta property="og:description" content="The Book of Shaders player" />
 <?php
     if (!empty($_GET['log'])) {
         echo '        <meta property="og:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
-        <meta property="og:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
+        <meta property="og:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
     }
 ?>
 
@@ -37,10 +38,10 @@
     if (!empty($_GET['log'])) {
         echo '
         <meta name="twitter:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
-        <meta name="twitter:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
+        <meta name="twitter:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
         <meta name="twitter:image:width" content="500">
         <meta name="twitter:image:height" content="500">
-        
+
         <meta name="twitter:player" content="https://thebookofshaders.com/glslPlayer/?log='. $_GET['log'].'">
         <meta name="twitter:player:width" content="500">
         <meta name="twitter:player:height" content="500">';
