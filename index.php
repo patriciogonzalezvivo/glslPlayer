@@ -24,6 +24,7 @@
     if (!empty($_GET['log'])) {
         echo '        <meta property="og:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
         <meta property="og:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
+        <meta property="og:image:secure_url" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
         <meta property="og:image:type" content="image/png"/>';
     }
 ?>
