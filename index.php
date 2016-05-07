@@ -33,7 +33,6 @@
         <meta name="twitter:title" content="GLSL Shader">
         <meta name="twitter:description" content="The Book of Shaders player">
         <meta name="twitter:domain" content="thebookofshaders.com">
-
 <?php
     if (!empty($_GET['log'])) {
         echo '
@@ -41,7 +40,7 @@
         <meta name="twitter:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
         <meta name="twitter:image:width" content="500">
         <meta name="twitter:image:height" content="500">
-
+        
         <meta name="twitter:player" content="https://thebookofshaders.com/glslPlayer/?log='. $_GET['log'].'">
         <meta name="twitter:player:width" content="500">
         <meta name="twitter:player:height" content="500">';
