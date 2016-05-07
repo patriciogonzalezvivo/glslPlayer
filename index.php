@@ -2,14 +2,13 @@
 <html>
     <head>
         <meta charset="utf-8">
-
 <?php
     if (!empty($_GET['log'])) {
         echo '
-            <title>'.$_GET['log'].'</title>';
+        <title>'.$_GET['log'].'</title>';
     } else {
         echo '
-            <title>GlslPlayer</title>';
+        <title>GlslPlayer</title>';
     }
 ?>
 
@@ -24,9 +23,11 @@
 <?php
     if (!empty($_GET['log'])) {
         echo '        <meta property="og:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
-        <meta property="og:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
+        <meta property="og:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
+        <meta property="og:image:type" content="image/png"/>';
     }
 ?>
+
 
         <!— Twitter Card—>
         <meta name="twitter:card" content="video">
@@ -47,6 +48,7 @@
         <meta name="twitter:player:height" content="500">';
     }
 ?>
+
 
         <style>
             body {
