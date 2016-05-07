@@ -13,7 +13,7 @@
     }
 ?>
 
-        <script type="text/javascript" src="http://thebookofshaders.com/glslCanvas/GlslCanvas.js"></script>
+        <script type="text/javascript" src="https://thebookofshaders.com/glslCanvas/GlslCanvas.js"></script>
         <script type="text/javascript" src="src/fetch.js"></script>
 
         <!— Open Graph data —>
@@ -22,8 +22,8 @@
         <meta property="og:description" content="The Book of Shaders player" />
 <?php
     if (!empty($_GET['log'])) {
-        echo '        <meta property="og:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
-        <meta property="og:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
+        echo '        <meta property="og:url" content="https://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
+        <meta property="og:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
     }
 ?>
 
@@ -37,17 +37,17 @@
 <?php
     if (!empty($_GET['log'])) {
         echo '
-        <meta name="twitter:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
-        <meta name="twitter:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
+        <meta name="twitter:url" content="https://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
+        <meta name="twitter:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
         <meta name="twitter:image:width" content="500">
         <meta name="twitter:image:height" content="500">
 
-        <meta name="twitter:player" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'">
+        <meta name="twitter:player" content="https://player.thebookofshaders.com/?log='. $_GET['log'].'">
         <meta name="twitter:player:width" content="500">
         <meta name="twitter:player:height" content="500">
 
-        <meta property="og:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
-        <meta property="og:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
+        <meta property="og:url" content="https://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
+        <meta property="og:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
     }
 ?>
 
@@ -266,8 +266,8 @@ void main(){
 
         var query = parseQuery(window.location.search.slice(1));
         if (query && query.log) {
-            sandbox_thumbnail = 'http://thebookofshaders.com/log/' + query.log + '.png';
-            load('http://thebookofshaders.com/log/' + query.log + '.frag');
+            sandbox_thumbnail = 'https://thebookofshaders.com/log/' + query.log + '.png';
+            load('https://thebookofshaders.com/log/' + query.log + '.frag');
         }
         if (window.location.hash !== '') {
             var hashes = location.hash.split('&');
