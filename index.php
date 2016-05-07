@@ -28,7 +28,7 @@
 ?>
 
         <!— Twitter Card—>
-        <meta name="twitter:card" content="image">
+        <meta name="twitter:card" content="video">
         <meta name="twitter:site" content="@bookofshaders">
         <meta name="twitter:title" content="GLSL Shader">
         <meta name="twitter:description" content="The Book of Shaders player">
