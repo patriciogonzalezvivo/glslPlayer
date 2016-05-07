@@ -2,7 +2,13 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>GlslCanvas</title>
+        <?php
+            if (!empty($_GET['log'])) {
+                echo '<title>'.$_GET['log'].'</title>';
+            } else {
+                echo '<title>GlslPlayer</title>';
+            }
+        ?>
 
         <script type="text/javascript" src="http://thebookofshaders.com/glslCanvas/GlslCanvas.js"></script>
         <script type="text/javascript" src="src/fetch.js"></script>
@@ -13,9 +19,10 @@
         <meta property="og:description" content="The Book of Shader player" />
 
         <?php
-            if (!empty($_GET['log']))
-            echo '<meta property="og:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>';
-            echo '<meta property="og:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
+            if (!empty($_GET['log'])) {
+                echo '<meta property="og:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>';
+                echo '<meta property="og:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
+            }
         ?>
 
         <style>
