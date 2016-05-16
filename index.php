@@ -46,10 +46,16 @@
     if (!empty($_GET['log'])) {
         echo '
         <meta name="twitter:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
-        <meta name="twitter:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
+        <meta name="twitter:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
+    } else {
+        echo '
+        <meta name="twitter:url" content="http://player.thebookofshaders.com/"/>
+        <meta name="twitter:image" content="http://thebookofshaders.com/log/thumb.png"/>';
+    }
+
+    echo '
         <meta name="twitter:image:width" content="500">
         <meta name="twitter:image:height" content="500">';
-    }
 ?>
 
 
