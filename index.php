@@ -17,17 +17,22 @@
 
         <!— Open Graph data —>
         <meta property="og:type" content="article" />
-        <meta property="og:title" content="GLSL Shader" />
+        <meta property="og:title" content="GLSL Player" />
         <meta property="og:site_name" content="The Book of Shaders"/>
-        <meta property="og:description" content="The Book of Shaders player" />
+        <meta property="og:description" content="Display your GLSL players as artworks" />
 <?php
     if (!empty($_GET['log'])) {
         echo '        <meta property="og:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
-        <meta property="og:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
+        <meta property="og:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
+    } else {
+        echo '        <meta property="og:url" content="http://player.thebookofshaders.com"/>
+        <meta property="og:image" content="http://thebookofshaders.com/thumb.png"/>';
+    }
+
+    echo'
         <meta property="og:image:type" content="image/png"/>
         <meta property="og:image:width" content="500" />
         <meta property="og:image:height" content="500" />';
-    }
 ?>
 
 
