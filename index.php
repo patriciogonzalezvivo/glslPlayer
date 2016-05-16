@@ -19,7 +19,7 @@
         <meta property="og:type" content="article" />
         <meta property="og:title" content="GLSL Player" />
         <meta property="og:site_name" content="The Book of Shaders"/>
-        <meta property="og:description" content="Display your GLSL players as artworks" />
+        <meta property="og:description" content="Display your GLSL shaders as artworks" />
 <?php
     if (!empty($_GET['log'])) {
         echo '        <meta property="og:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
