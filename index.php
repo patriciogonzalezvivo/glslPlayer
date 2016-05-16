@@ -39,8 +39,8 @@
         <!— Twitter Card—>
         <meta name="twitter:card" content="image">
         <meta name="twitter:site" content="@bookofshaders">
-        <meta name="twitter:title" content="GLSL Shader">
-        <meta name="twitter:description" content="The Book of Shaders player">
+        <meta name="twitter:title" content="GLSL Player">
+        <meta name="twitter:description" content="Display your GLSL shaders as artworks">
         <meta name="twitter:domain" content="thebookofshaders.com">
 <?php
     if (!empty($_GET['log'])) {
