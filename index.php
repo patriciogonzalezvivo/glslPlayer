@@ -16,13 +16,14 @@
         <script type="text/javascript" src="src/fetch.js"></script>
 
         <!— Open Graph data —>
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="GLSL Player" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="GLSL Player"/>
         <meta property="og:site_name" content="The Book of Shaders"/>
-        <meta property="og:description" content="Display your GLSL shaders as artworks" />
+        <meta property="og:description" content="Display your GLSL shaders as artworks"/>
 <?php
     if (!empty($_GET['log'])) {
-        echo '        <meta property="og:url" content="https://thebookofshaders.com/glslPlayer/?log='. $_GET['log'].'"/>
+        // <meta property="og:url" content="https://thebookofshaders.com/glslPlayer/?log='. $_GET['log'].'"/>
+        echo '        
         <meta property="og:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
         <meta property="og:image:secure_url" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
     } else {
