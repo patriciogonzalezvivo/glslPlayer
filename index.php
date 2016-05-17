@@ -22,11 +22,11 @@
         <meta property="og:description" content="Display your GLSL shaders as artworks" />
 <?php
     if (!empty($_GET['log'])) {
-        echo '        <meta property="og:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
-        <meta property="og:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
+        echo '        <meta property="og:url" content="https://thebookofshaders.com/glslPlayer/?log='. $_GET['log'].'"/>
+        <meta property="og:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
     } else {
-        echo '        <meta property="og:url" content="http://player.thebookofshaders.com"/>
-        <meta property="og:image" content="http://thebookofshaders.com/thumb.png"/>';
+        echo '        <meta property="og:url" content="https://thebookofshaders.com/glslPlayer/"/>
+        <meta property="og:image" content="https://thebookofshaders.com/thumb.png"/>';
     }
 
     echo'
@@ -45,12 +45,12 @@
 <?php
     if (!empty($_GET['log'])) {
         echo '
-        <meta name="twitter:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
+        <meta name="twitter:url" content="https://thebookofshaders.com/glslPlayer/?log='. $_GET['log'].'"/>
         <meta name="twitter:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
     } else {
         echo '
-        <meta name="twitter:url" content="http://player.thebookofshaders.com/"/>
-        <meta name="twitter:image" content="http://thebookofshaders.com/log/thumb.png"/>';
+        <meta name="twitter:url" content="https://thebookofshaders.com/glslPlayer/"/>
+        <meta name="twitter:image" content="https://thebookofshaders.com/thumb.png"/>';
     }
 
     echo '
