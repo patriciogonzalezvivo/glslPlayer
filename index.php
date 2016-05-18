@@ -37,24 +37,24 @@
 ?>
 
 
-        <!— Twitter Card—>
+<!--         <!— Twitter Card—>
         <meta name="twitter:card" content="image">
         <meta name="twitter:site" content="@bookofshaders">
         <meta name="twitter:title" content="GLSL Player">
         <meta name="twitter:description" content="Display your GLSL shaders as artworks">
-        <meta name="twitter:domain" content="thebookofshaders.com">
+        <meta name="twitter:domain" content="thebookofshaders.com"> -->
 <?php
-    if (!empty($_GET['log'])) {
-        echo '
-        <meta name="twitter:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
-    } else {
-        echo '
-        <meta name="twitter:image" content="https://thebookofshaders.com/thumb.png"/>';
-    }
+    // if (!empty($_GET['log'])) {
+    //     echo '
+    //     <meta name="twitter:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
+    // } else {
+    //     echo '
+    //     <meta name="twitter:image" content="https://thebookofshaders.com/thumb.png"/>';
+    // }
 
-    echo '
-        <meta name="twitter:image:width" content="500">
-        <meta name="twitter:image:height" content="500">';
+    // echo '
+    //     <meta name="twitter:image:width" content="500">
+    //     <meta name="twitter:image:height" content="500">';
 ?>
 
 
