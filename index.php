@@ -16,33 +16,46 @@
         <script type="text/javascript" src="src/fetch.js"></script>
 
         <!— Open Graph data —>
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="GLSL Shader" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="GLSL Player"/>
         <meta property="og:site_name" content="The Book of Shaders"/>
-        <meta property="og:description" content="The Book of Shaders player" />
+        <meta property="og:description" content="Display your GLSL shaders as artworks"/>
 <?php
     if (!empty($_GET['log'])) {
-        echo '        <meta property="og:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
+        echo '        
+        <meta property="og:image" content="http://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
+        <meta property="og:image:secure_url" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
+    } else {
+        echo '
+        <meta property="og:image" content="https://thebookofshaders.com/thumb.png"/>';
+    }
+
+    echo'
         <meta property="og:image:type" content="image/png"/>
         <meta property="og:image:width" content="500" />
         <meta property="og:image:height" content="500" />';
-    }
 ?>
 
-        <!— Twitter Card—>
+
+<!--         <!— Twitter Card—>
         <meta name="twitter:card" content="image">
         <meta name="twitter:site" content="@bookofshaders">
-        <meta name="twitter:title" content="GLSL Shader">
-        <meta name="twitter:description" content="The Book of Shaders player">
-        <meta name="twitter:domain" content="thebookofshaders.com">
+        <meta name="twitter:title" content="GLSL Player">
+        <meta name="twitter:description" content="Display your GLSL shaders as artworks">
+        <meta name="twitter:domain" content="thebookofshaders.com"> -->
 <?php
-    if (!empty($_GET['log'])) {
-        echo '
-        <meta name="twitter:url" content="https://thebookofshaders.com/glslPlayer/?log='. $_GET['log'].'"/>
-        <meta name="twitter:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
-        <meta name="twitter:image:width" content="500">
-        <meta name="twitter:image:height" content="500">';
-    }
+
+    // if (!empty($_GET['log'])) {
+    //     echo '
+    //     <meta name="twitter:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>';
+    // } else {
+    //     echo '
+    //     <meta name="twitter:image" content="https://thebookofshaders.com/thumb.png"/>';
+    // }
+
+    // echo '
+    //     <meta name="twitter:image:width" content="500">
+    //     <meta name="twitter:image:height" content="500">';
 ?>
         <!-- Bootstrap Core CSS -->
         <link href="src/bootstrap.min.css" rel="stylesheet">
