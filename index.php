@@ -177,7 +177,7 @@
         </style>
     </head>
     <body>
-        <div id="wrapper" class="toggled">
+        <div id="wrapper" >
             <div id="page-content-wrapper">
                 <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
                     <canvas id="glslCanvas" data-fragment="
