@@ -59,7 +59,7 @@
 ?>
         <!-- Bootstrap Core CSS -->
         <link href="src/bootstrap.min.css" rel="stylesheet">
-        <link href="src/simple-sidebar.css" rel="stylesheet">
+        <!-- <link href="src/simple-sidebar.css" rel="stylesheet"> -->
         <!-- jQuery -->
         <script src="src/jquery.js"></script>
         <!-- Bootstrap Core JavaScript -->
@@ -88,8 +88,8 @@
             #sidebar-wrapper {
                 z-index: 1000;
                 position: fixed;
-                right: 250px;
-                width: 0;
+                right: -250px;
+                width: 250px;
                 height: 100%;
                 margin-rigth: -250px;
                 overflow-y: auto;
@@ -98,10 +98,12 @@
                 -moz-transition: all 0.5s ease;
                 -o-transition: all 0.5s ease;
                 transition: all 0.5s ease;
+                opacity: .7;
             }
 
             #wrapper.toggled #sidebar-wrapper {
                 width: 250px;
+                right: 0px;
             }
 
             #page-content-wrapper {
@@ -130,7 +132,7 @@
                 }
 
                 #wrapper.toggled #sidebar-wrapper {
-                    width: 0;
+                    right: 0px;
                 }
 
                 #page-content-wrapper {
@@ -153,7 +155,6 @@
                 color: white;
                 font-family: Helvetica, Arial, sans-serif;
                 text-decoration: none;
-                white-space: normal;
             }
 
             #title {
