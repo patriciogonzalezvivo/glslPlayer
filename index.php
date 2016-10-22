@@ -22,14 +22,12 @@
         <meta property="og:description" content="The Book of Shaders player" />
 <?php
     if (!empty($_GET['log'])) {
-        echo '        <meta property="og:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
-        <meta property="og:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
+        echo '        <meta property="og:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
         <meta property="og:image:type" content="image/png"/>
         <meta property="og:image:width" content="500" />
         <meta property="og:image:height" content="500" />';
     }
 ?>
-
 
         <!— Twitter Card—>
         <meta name="twitter:card" content="image">
@@ -40,17 +38,95 @@
 <?php
     if (!empty($_GET['log'])) {
         echo '
-        <meta name="twitter:url" content="http://player.thebookofshaders.com/?log='. $_GET['log'].'"/>
+        <meta name="twitter:url" content="https://thebookofshaders.com/glslPlayer/?log='. $_GET['log'].'"/>
         <meta name="twitter:image" content="https://thebookofshaders.com/log/'.$_GET['log'].'.png"/>
         <meta name="twitter:image:width" content="500">
         <meta name="twitter:image:height" content="500">';
     }
 ?>
-
+        <!-- Bootstrap Core CSS -->
+        <link href="src/bootstrap.min.css" rel="stylesheet">
+        <link href="src/simple-sidebar.css" rel="stylesheet">
+        <!-- jQuery -->
+        <script src="src/jquery.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="src/bootstrap.min.js"></script>
 
         <style>
             body {
                 background: #101515;
+                overflow-x: hidden;
+            }
+
+            #wrapper {
+                padding-rigth: 0;
+                -webkit-transition: all 0.5s ease;
+                -moz-transition: all 0.5s ease;
+                -o-transition: all 0.5s ease;
+                transition: all 0.5s ease;
+                width: 100%;
+                height: 100%;
+            }
+
+            #wrapper.toggled {
+                padding-rigth: 250px;
+            }
+
+            #sidebar-wrapper {
+                z-index: 1000;
+                position: fixed;
+                right: 250px;
+                width: 0;
+                height: 100%;
+                margin-rigth: -250px;
+                overflow-y: auto;
+                background: #000;
+                -webkit-transition: all 0.5s ease;
+                -moz-transition: all 0.5s ease;
+                -o-transition: all 0.5s ease;
+                transition: all 0.5s ease;
+            }
+
+            #wrapper.toggled #sidebar-wrapper {
+                width: 250px;
+            }
+
+            #page-content-wrapper {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                padding: 15px;
+            }
+
+            #wrapper.toggled #page-content-wrapper {
+                position: absolute;
+                margin-right: -250px;
+            }
+
+            @media(min-width:768px) {
+                #wrapper {
+                    padding-rigth: 250px;
+                }
+
+                #wrapper.toggled {
+                    padding-rigth: 0;
+                }
+
+                #sidebar-wrapper {
+                    width: 250px;
+                }
+
+                #wrapper.toggled #sidebar-wrapper {
+                    width: 0;
+                }
+
+                #page-content-wrapper {
+                    padding: 20px;
+                }
+
+                #wrapper.toggled #page-content-wrapper {
+                    margin-right: 0;
+                }
             }
 
             #glslCanvas {
@@ -60,142 +136,145 @@
                 transform: translate(-50%,-50%);
             }​
 
-            .blank {
-
-            }
-
-            #credits {
-                position: absolute; 
-                bottom: 10px; 
-                right: 15px; 
-                text-align: right;
-                background: rgba(0,0,0,.5);
-                padding: 12px;
-                padding-top: 5px;
-                padding-bottom: 5px;
-                margin: 0px
-            }
-
             .label {
                 color: white;
                 font-family: Helvetica, Arial, sans-serif;
-                text-decoration: none; 
-                line-height: 0.0;
+                text-decoration: none;
+                white-space: normal;
             }
 
             #title {
                 font-size: 24px;
                 font-weight: 600;
+                display: block;
+                margin: auto;
+                padding-top: 30px;
+                padding-bottom: 20px;
+                white-space: normal;
             }
 
             #author {
-                font-size: 14px; 
-                font-style: italic;
-                font-weight: 100;
+                font-size: 18px; 
+                font-weight: 200;
+                display: block;
+                margin: auto;
+                white-space: normal;
             }
         </style>
-
     </head>
     <body>
-        <canvas id="glslCanvas" data-fragment="
-// Author: Patricio Gonzalez Vivo
+        <div id="wrapper" class="toggled">
+            <div id="page-content-wrapper">
+                <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">
+                    <canvas id="glslCanvas" data-fragment="
+        // Author: Patricio Gonzalez Vivo
 
-#ifdef GL_ES
-precision mediump float;
-#endif
+        #ifdef GL_ES
+        precision mediump float;
+        #endif
 
-#define PI 3.1415926535
-#define HALF_PI 1.57079632679
+        #define PI 3.1415926535
+        #define HALF_PI 1.57079632679
 
-uniform vec2 u_resolution;
-uniform float u_time;
+        uniform vec2 u_resolution;
+        uniform float u_time;
 
-uniform sampler2D u_tex0;
-uniform vec2 u_tex0Resolution;
+        uniform sampler2D u_tex0;
+        uniform vec2 u_tex0Resolution;
 
-uniform sampler2D u_logo;
-uniform vec2 u_logoResolution;
+        uniform sampler2D u_logo;
+        uniform vec2 u_logoResolution;
 
-float speedMoon = 0.01;
-float speedSun = 0.25;
+        float speedMoon = 0.01;
+        float speedSun = 0.25;
 
-vec3 sphereNormals(in vec2 uv) {
-    uv = fract(uv)*2.0-1.0; 
-    vec3 ret;
-    ret.xy = sqrt(uv * uv) * sign(uv);
-    ret.z = sqrt(abs(1.0 - dot(ret.xy,ret.xy)));
-    ret = ret * 0.5 + 0.5;    
-    return mix(vec3(0.0), ret, smoothstep(1.0,0.98,dot(uv,uv)) );
-}
+        vec3 sphereNormals(in vec2 uv) {
+            uv = fract(uv)*2.0-1.0; 
+            vec3 ret;
+            ret.xy = sqrt(uv * uv) * sign(uv);
+            ret.z = sqrt(abs(1.0 - dot(ret.xy,ret.xy)));
+            ret = ret * 0.5 + 0.5;    
+            return mix(vec3(0.0), ret, smoothstep(1.0,0.98,dot(uv,uv)) );
+        }
 
-vec2 sphereCoords(vec2 _st, float _scale){
-    float maxFactor = sin(1.570796327);
-    vec2 uv = vec2(0.0);
-    vec2 xy = 2.0 * _st.xy - 1.0;
-    float d = length(xy);
-    if (d < (2.0-maxFactor)){
-        d = length(xy * maxFactor);
-        float z = sqrt(1.0 - d * d);
-        float r = atan(d, z) / 3.1415926535 * _scale;
-        float phi = atan(xy.y, xy.x);
+        vec2 sphereCoords(vec2 _st, float _scale){
+            float maxFactor = sin(1.570796327);
+            vec2 uv = vec2(0.0);
+            vec2 xy = 2.0 * _st.xy - 1.0;
+            float d = length(xy);
+            if (d < (2.0-maxFactor)){
+                d = length(xy * maxFactor);
+                float z = sqrt(1.0 - d * d);
+                float r = atan(d, z) / 3.1415926535 * _scale;
+                float phi = atan(xy.y, xy.x);
 
-        uv.x = r * cos(phi) + 0.5;
-        uv.y = r * sin(phi) + 0.5;
-    } else {
-        uv = _st.xy;
-    }
-    return uv;
-}
+                uv.x = r * cos(phi) + 0.5;
+                uv.y = r * sin(phi) + 0.5;
+            } else {
+                uv = _st.xy;
+            }
+            return uv;
+        }
 
-vec4 sphereTexture(in sampler2D _tex, in vec2 _uv) {
-    vec2 st = sphereCoords(_uv, 1.0);
+        vec4 sphereTexture(in sampler2D _tex, in vec2 _uv) {
+            vec2 st = sphereCoords(_uv, 1.0);
 
-    float aspect = u_tex0Resolution.y/u_tex0Resolution.x;
-    st.x = fract(st.x*aspect + u_time*speedMoon);
+            float aspect = u_tex0Resolution.y/u_tex0Resolution.x;
+            st.x = fract(st.x*aspect + u_time*speedMoon);
 
-    return texture2D(_tex, st);
-}
+            return texture2D(_tex, st);
+        }
 
-void main(){
-    vec2 st = gl_FragCoord.xy/u_resolution.xy;
-    st = (st-.5)*1.0+.5;
-    if (u_resolution.y > u_resolution.x ) {
-        st.y *= u_resolution.y/u_resolution.x;
-        st.y -= (u_resolution.y*.5-u_resolution.x*.5)/u_resolution.x;
-    } else {
-        st.x *= u_resolution.x/u_resolution.y;
-        st.x -= (u_resolution.x*.5-u_resolution.y*.5)/u_resolution.y;
-    }
+        void main(){
+            vec2 st = gl_FragCoord.xy/u_resolution.xy;
+            st = (st-.5)*1.0+.5;
+            if (u_resolution.y > u_resolution.x ) {
+                st.y *= u_resolution.y/u_resolution.x;
+                st.y -= (u_resolution.y*.5-u_resolution.x*.5)/u_resolution.x;
+            } else {
+                st.x *= u_resolution.x/u_resolution.y;
+                st.x -= (u_resolution.x*.5-u_resolution.y*.5)/u_resolution.y;
+            }
 
-    vec4 color = vec4(1.0);
-  
-    color *= sphereTexture(u_tex0, st);
+            vec4 color = vec4(1.0);
+          
+            color *= sphereTexture(u_tex0, st);
 
-    // Calculate sun direction
-    vec3 sunPos = normalize(vec3(cos(u_time*speedSun-HALF_PI),0.0,sin(speedSun*u_time-HALF_PI)));
-    vec3 surface = normalize(sphereNormals(st)*2.0-1.0);
-   
-    // Add Shadows
-    color *= dot(sunPos,surface);
+            // Calculate sun direction
+            vec3 sunPos = normalize(vec3(cos(u_time*speedSun-HALF_PI),0.0,sin(speedSun*u_time-HALF_PI)));
+            vec3 surface = normalize(sphereNormals(st)*2.0-1.0);
+           
+            // Add Shadows
+            color *= dot(sunPos,surface);
 
-    // Blend black the edge of the sphere
-    float radius = 1.0-length( vec2(0.5)-st )*2.0;
-    color *= smoothstep(0.001,0.02,radius);
+            // Blend black the edge of the sphere
+            float radius = 1.0-length( vec2(0.5)-st )*2.0;
+            color *= smoothstep(0.001,0.02,radius);
 
-    if (u_logoResolution.x > 0.0) {
-        st -= 0.25;
-        st *= 2.0;
-        color.rgb += texture2D(u_logo,st).rgb * smoothstep(0.71,0.75, 1.0-dot(st-vec2(.5),st-vec2(.5)) );
-    }
-    gl_FragColor = color;
-}" width="800" height="600"> </canvas>
-        <div id="credits">
-            <p class="label" id="title"></p>
-            <p class="label" id="author"></p>
+            if (u_logoResolution.x > 0.0) {
+                st -= 0.25;
+                st *= 2.0;
+                color.rgb += texture2D(u_logo,st).rgb * smoothstep(0.71,0.75, 1.0-dot(st-vec2(.5),st-vec2(.5)) );
+            }
+            gl_FragColor = color;
+        }" width="800" height="600">
+                    </canvas>
+                </a>
+            </div>
+            <div id="sidebar-wrapper">
+                <p class="label" id="title"></p>
+                <p class="label" id="author"></p>
+            </div>
         </div>
+    <!-- /#wrapper -->
     </body>
 
     <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+
         var canvas = document.getElementById("glslCanvas");
         var sandbox = new GlslCanvas(canvas);
         var texCounter = 0;
@@ -231,13 +310,14 @@ void main(){
                     sandbox.load(content);
                     var title = addTitle();
                     var author = addAuthor();
-                    if ( title === "unknown" && author === "unknown") {
-                        document.getElementById("credits").style.visibility = "hidden";
-                    } else {
-                        document.getElementById("credits").style.visibility = "visible";
-                    }                
+                    // if ( title === "unknown" && author === "unknown") {
+                    //     document.getElementById("credits").style.visibility = "hidden";
+                    // } else {
+                    //     document.getElementById("credits").style.visibility = "visible";
+                    // }                
                 })
         }
+
         function addTitle() {
             var result = sandbox_content.match(/\/\/\s*[T|t]itle\s*:\s*([\w|\s|\@|\(|\)|\-|\_]*)/i);
             if (result && !(result[1] === ' ' || result[1] === '')) {
@@ -246,9 +326,10 @@ void main(){
                 return sandbox_title;
             }
             else {
-                return "unknown";
+                return "untitled";
             }
         }
+
         function addAuthor() {
             var result = sandbox_content.match(/\/\/\s*[A|a]uthor\s*[\:]?\s*([\w|\s|\@|\(|\)|\-|\_]*)/i);
             if (result && !(result[1] === ' ' || result[1] === '')) {
