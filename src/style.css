@@ -1,0 +1,144 @@
+body {
+    background: #101515;
+    overflow-x: hidden;
+}
+
+#wrapper {
+    padding-rigth: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    width: 100%;
+    height: 100%;
+}
+
+#wrapper.toggled {
+    padding-rigth: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    right: -250px;
+    width: 250px;
+    height: 100%;
+    margin-rigth: -250px;
+    overflow-y: auto;
+    background: rgba(0,0,0,.5);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    opacity: .9;
+}
+
+#menu-toggle {
+    z-index: 100;
+    right: 0px;
+    top: 0px;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    border: none;
+    border-radius: 0px;
+    position: absolute;
+    font-size: 25px;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+    right: 0px;
+}
+
+#wrapper.toggled #menu-toggle {
+    right: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-rigth: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-rigth: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        right: 0px;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        margin-right: 0;
+    }
+}
+
+#glslCanvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}​
+
+.label {
+    color: white;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'Open Sans', sans-serif
+    text-decoration: none;
+    letter-spacing: 0.2px;
+    line-height: 170%;
+    padding-bottom: 10px;
+    -webkit-font-smoothing: antialiased;
+}
+
+#title {
+    font-size: 18px;
+    font-weight: 500;
+    display: block;
+    margin: auto;
+    padding-top: 10px;
+    white-space: normal;
+    text-align: left;
+}
+
+#author {
+    font-size: 14px; 
+    font-weight: 200;
+    display: block;
+    margin: auto;
+    white-space: normal;
+    text-align: left;
+    line-height: 170%;
+}
+
+#description {
+    font-size: 14px; 
+    font-weight: 200;
+    display: block;
+    margin: auto;
+    white-space: normal;
+    text-align: justify;
+    line-height: 170%;
+}
