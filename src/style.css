@@ -113,6 +113,26 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+a {
+    color: white;
+    font-weight: 400;
+}
+
+/* visited link */
+a:visited {
+    color: lightgray;
+}
+
+/* mouse over link */
+a:hover {
+    color: white;
+}
+
+/* selected link */
+a:active {
+    color: white;
+}
+
 #title {
     font-size: 18px;
     font-weight: 500;

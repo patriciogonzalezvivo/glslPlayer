@@ -63,7 +63,7 @@ function getDescription() {
     var result = sandbox_content.match(/\/\/\s*[D|d]escription\s*[\:]?.*(\s*\n\/\/.*)*/m);
     if (result) {
         console.log(result);
-        return result[0].replace(/\/\/\s*((d|D)escription:\s*)?/gm, '');
+        return result[0].replace(/^\/\/\s*((d|D)escription:\s*)?/gm, '');
     }
     else {
         return "";
