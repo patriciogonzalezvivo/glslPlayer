@@ -62,7 +62,6 @@ function getAuthor() {
 function getDescription() {
     var result = sandbox_content.match(/\/\/\s*[D|d]escription\s*[\:]?.*(\s*\n\/\/.*)*/m);
     if (result) {
-        console.log(result);
         return result[0].replace(/^\/\/\s*((d|D)escription:\s*)?/gm, '');
     }
     else {
@@ -72,9 +71,12 @@ function getDescription() {
 
 var query = parseQuery(window.location.search.slice(1));
 
-if (query && query.log) {
-    sandbox_thumbnail = 'https://thebookofshaders.com/log/' + query.log + '.png';
-    load('https://thebookofshaders.com/log/' + query.log + '.frag');
+if (query) {
+    if (query.log) {
+        load('https://thebookofshaders.com/log/' + query.log + '.frag');
+    } else if (query.url) {
+        load(query.url);
+    }
 }
 
 if (window.location.hash !== '') {
