@@ -43,7 +43,7 @@
         <!-- Marked: markdown parser -->
         <script type="text/javascript" src="src/marked.js"></script>
         <!-- GLSL Canvas -->
-        <script type="text/javascript" src="http://patriciogonzalezvivo.github.io/glslCanvas/dist/GlslCanvas.js"></script>
+        <script type="text/javascript" src="https://patriciogonzalezvivo.github.io/glslCanvas/dist/GlslCanvas.js"></script>
         <link href="src/style.css" rel="stylesheet">
 
     </head>
